@@ -1,0 +1,28 @@
+<html>
+<head lang="zh">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title>首页</title>
+</head>
+<body>
+	<h1>Welcome $name</h1>
+	Your age is $age<br>
+	爱好：<br>
+	#foreach ($hobby in $hobbies)
+	$velocityCount : ${hobby}<br>
+	#end
+	<hr>
+	#if($age < 10)
+	you are young!
+	#else
+	you ar old!
+	#end
+	<hr>
+	${user.loginName}${user.age}
+	<hr>
+	#set($user.age = 5)
+	${user.age}
+	<hr>
+</body>
+</html>
