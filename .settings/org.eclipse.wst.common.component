@@ -3,9 +3,7 @@
     <wb-module deploy-name="tools">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-        <wb-resource deploy-path="/" source-path="/webapp" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/" source-path="/target/spring-web-demo"/>
         <property name="java-output-path" value="/tools/target/classes"/>
         <property name="component.exclusion.patterns" value="WEB-INF/web.xml"/>
         <property name="context-root" value="spring-web-demo"/>

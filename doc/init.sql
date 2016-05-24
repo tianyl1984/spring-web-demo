@@ -1,0 +1,14 @@
+
+CREATE TABLE `student` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(200) NULL DEFAULT NULL,
+	`age` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+
+
+

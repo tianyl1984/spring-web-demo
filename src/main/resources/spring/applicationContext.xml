@@ -12,4 +12,56 @@
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
+	<context:component-scan base-package="com.tianyl">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<context:annotation-config />
+	
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"> 
+	    <property name="url" value="jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&amp;characterEncoding=utf-8&amp;rewriteBatchedStatements=true" />
+	    <property name="username" value="root" />
+	    <property name="password" value="hzth-801" />
+	    <property name="filters" value="stat" />
+	    <property name="maxActive" value="20" />
+	    <property name="initialSize" value="1" />
+	    <property name="maxWait" value="60000" />
+	    <property name="minIdle" value="1" />
+	    <property name="timeBetweenEvictionRunsMillis" value="3000" />
+	    <property name="minEvictableIdleTimeMillis" value="300000" />
+	    <property name="validationQuery" value="SELECT 'x'" />
+	    <property name="testWhileIdle" value="true" />
+	    <property name="testOnBorrow" value="false" />
+	    <property name="testOnReturn" value="false" />
+	    <property name="poolPreparedStatements" value="true" />
+	    <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+	</bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.tianyl"/>
+		<property name="annotationClass" value="com.tianyl.mybatisDemo.annotation.MybatisMapper"></property>
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+  		<property name="dataSource" ref="dataSource"/>
+  		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+  		<property name="mapperLocations" value="classpath*:com/tianyl/**/*Mapper.xml"></property>
+  	</bean>
+    
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+	<tx:annotation-driven transaction-manager="trManager" proxy-target-class="true"/>
+	
+    <bean id="trManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+	
+<!--     <tx:advice id="txAdvice" transaction-manager="trManager"> -->
+<!--         <tx:attributes> -->
+<!--             <tx:method name="*" propagation="REQUIRED" read-only="true"/> -->
+<!--         </tx:attributes> -->
+<!--     </tx:advice> -->
+
+<!--     <aop:config expose-proxy="true"> -->
+<!--         <aop:pointcut id="txPointcut" expression="execution(* com.tianyl..service..*.*(..))" /> -->
+<!--         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/> -->
+<!--     </aop:config> -->
+	<bean id="springContextHolder" class="com.tianyl.mybatisDemo.util.SpringContextHolder" lazy-init="false" />
 </beans>

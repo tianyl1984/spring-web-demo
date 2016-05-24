@@ -1,0 +1,14 @@
+<html>
+<head lang="zh">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title>首页</title>
+</head>
+<body>
+	<h1>Welcome</h1>
+	#foreach ($stu in $students)
+	$velocityCount : ${stu.name} ${stu.age}<br>
+	#end
+</body>
+</html>

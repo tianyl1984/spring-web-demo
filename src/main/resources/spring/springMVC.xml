@@ -16,7 +16,9 @@
                         http://www.springframework.org/schema/tx 
                         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
     <!-- 设置使用注解的类所在的jar包 -->
-    <context:component-scan base-package="com.tianyl.velocityDemo.controller" />
+    <context:component-scan base-package="com.tianyl" use-default-filters="false">
+    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
     
 	<bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
 	    <property name="resourceLoaderPath" value="WEB-INF/classes/"/>
@@ -29,8 +31,8 @@
 	</bean>
 	
 	<bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">  
-	    <property name="suffix" value=".vm"/>  
-	    <property name="contentType" value="text/html;charset=utf-8"/>  
+	    <property name="suffix" value=".vm"/>
+	    <property name="contentType" value="text/html;charset=utf-8"/>
 	</bean>
 	
 </beans>
