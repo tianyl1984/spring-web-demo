@@ -3,6 +3,7 @@
     xmlns:aop="http://www.springframework.org/schema/aop"
     xmlns:context="http://www.springframework.org/schema/context" 
     xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
                            http://www.springframework.org/schema/tx
@@ -10,7 +11,9 @@
                            http://www.springframework.org/schema/aop
                            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
                            http://www.springframework.org/schema/context
-                           http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+                           http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                           http://code.alibabatech.com/schema/dubbo
+                           http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
 
 	<context:component-scan base-package="com.tianyl">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
@@ -64,4 +67,12 @@
 <!--         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/> -->
 <!--     </aop:config> -->
 	<bean id="springContextHolder" class="com.tianyl.mybatisDemo.util.SpringContextHolder" lazy-init="false" />
+	
+	<!-- 提供方信息 -->
+	<dubbo:application name="spring-web-app" />
+	<!-- 注册服务地址 -->
+	<dubbo:registry address="zookeeper://192.168.20.33:2181"/>
+    <!-- 暴露服务访问地址 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+    <dubbo:reference id="timeService" interface="com.tianyl.sdk.ITimeService"/>
 </beans>
