@@ -71,8 +71,10 @@
 	<!-- 提供方信息 -->
 	<dubbo:application name="spring-web-app" />
 	<!-- 注册服务地址 -->
-	<dubbo:registry address="zookeeper://192.168.20.33:2181"/>
+	<dubbo:registry address="zookeeper://192.168.31.39:2181"/>
     <!-- 暴露服务访问地址 -->
     <dubbo:protocol name="dubbo" port="20880" />
-    <dubbo:reference id="timeService" interface="com.tianyl.sdk.ITimeService"/>
+<!--     <dubbo:reference id="timeService" interface="com.tianyl.sdk.ITimeService"/> -->
+	<!-- 注解方式 -->
+	<dubbo:annotation package="com.tianyl" />
 </beans>
