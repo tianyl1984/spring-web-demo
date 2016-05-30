@@ -56,16 +56,6 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 	
-<!--     <tx:advice id="txAdvice" transaction-manager="trManager"> -->
-<!--         <tx:attributes> -->
-<!--             <tx:method name="*" propagation="REQUIRED" read-only="true"/> -->
-<!--         </tx:attributes> -->
-<!--     </tx:advice> -->
-
-<!--     <aop:config expose-proxy="true"> -->
-<!--         <aop:pointcut id="txPointcut" expression="execution(* com.tianyl..service..*.*(..))" /> -->
-<!--         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/> -->
-<!--     </aop:config> -->
 	<bean id="springContextHolder" class="com.tianyl.mybatisDemo.util.SpringContextHolder" lazy-init="false" />
 	
 	<!-- 提供方信息 -->

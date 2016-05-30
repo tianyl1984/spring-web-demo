@@ -5,6 +5,7 @@
     xmlns:context="http://www.springframework.org/schema/context"
     xmlns:aop="http://www.springframework.org/schema/aop"
     xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
     xsi:schemaLocation="http://www.springframework.org/schema/beans 
                         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
                         http://www.springframework.org/schema/mvc 
@@ -14,10 +15,12 @@
                         http://www.springframework.org/schema/aop 
                         http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
                         http://www.springframework.org/schema/tx 
-                        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+                        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+                        http://code.alibabatech.com/schema/dubbo
+                        http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
     <!-- 设置使用注解的类所在的jar包 -->
     <context:component-scan base-package="com.tianyl" use-default-filters="false">
-    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     
 	<bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
@@ -35,4 +38,5 @@
 	    <property name="contentType" value="text/html;charset=utf-8"/>
 	</bean>
 	
+	<dubbo:annotation package="com.tianyl" />
 </beans>
